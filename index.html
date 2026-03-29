@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="A bright, playful book picker that helps young readers discover their next favorite story."
+  />
+  <title>Story Scout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sky"></div>
+  <div class="sparkles" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <main class="app-shell">
+    <section class="language-bar">
+      <div class="language-toggle" aria-label="Language toggle">
+        <button id="langEnglish" class="lang-btn is-active" type="button" data-lang="en" aria-pressed="true">
+          <span class="flag" aria-hidden="true">🇺🇸</span>
+          <span>English</span>
+        </button>
+        <button id="langGerman" class="lang-btn" type="button" data-lang="de" aria-pressed="false">
+          <span class="flag" aria-hidden="true">🇩🇪</span>
+          <span>Deutsch</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="hero card">
+      <div class="hero-copy">
+        <p class="eyebrow" id="heroEyebrow">Story Scout for big imaginations</p>
+        <h1 id="heroTitle">Find a book your kid will want to keep reading.</h1>
+        <p class="lead" id="heroLead">
+          Pick the kinds of stories she loves, skip the stuff that turns her off, and
+          we will build a cheerful stack of strong next reads.
+        </p>
+        <div class="hero-pills">
+          <span id="heroPillFunny">Funny</span>
+          <span id="heroPillMagic">Magical</span>
+          <span id="heroPillCozy">Cozy</span>
+          <span id="heroPillAdventure">Adventurous</span>
+        </div>
+      </div>
+      <div class="hero-stage" aria-hidden="true">
+        <div class="hero-orbit hero-orbit-one"></div>
+        <div class="hero-orbit hero-orbit-two"></div>
+        <div class="hero-book hero-book-main">
+          <span class="hero-book-label">Quest</span>
+          <span class="hero-book-title">Story Stack</span>
+        </div>
+        <div class="hero-book hero-book-side hero-book-side-a">
+          <span class="hero-book-label">Mood</span>
+          <span class="hero-book-title">Mystery</span>
+        </div>
+        <div class="hero-book hero-book-side hero-book-side-b">
+          <span class="hero-book-label">World</span>
+          <span class="hero-book-title">Magic</span>
+        </div>
+        <div class="hero-sticker hero-sticker-star">Top Pick</div>
+        <div class="hero-sticker hero-sticker-bolt">Read Next</div>
+      </div>
+      <aside class="hero-panel">
+        <p class="mini-label" id="heroPanelLabel">What makes this version better</p>
+        <ul class="hero-list">
+          <li id="heroList1">Speaks directly to young readers</li>
+          <li id="heroList2">Uses preferences that actually matter</li>
+          <li id="heroList3">Explains why each book fits</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="card intro-card">
+      <div>
+        <h2 id="introTitle">Build your reader map</h2>
+        <p class="hint" id="introHint">
+          This works best when you choose a few things your child genuinely gets excited
+          about. Think favorite books, favorite moods, and what makes her say, "one more chapter."
+        </p>
+      </div>
+      <div class="progress-note" id="selectionSummary">Choose at least 3 things to get a strong match.</div>
+    </section>
+
+    <section class="card">
+      <h2 id="snapshotTitle">1. Reader Snapshot</h2>
+      <div class="profile-grid">
+        <label>
+          <span id="readerNameLabel">Reader name</span>
+          <input id="readerName" type="text" value="Luna" placeholder="Reader name" />
+        </label>
+        <label>
+          <span id="readerAgeLabel">Age</span>
+          <input id="readerAge" type="number" min="5" max="16" value="9" />
+        </label>
+        <label>
+          <span id="readerModeLabel">Reading comfort</span>
+          <select id="readerMode">
+            <option id="readerModeReadAloud" value="read_aloud">Best with read-alouds</option>
+            <option id="readerModeJustRight" value="just_right" selected>Just-right chapter books</option>
+            <option id="readerModeBigChallenge" value="big_challenge">Ready for bigger adventures</option>
+          </select>
+        </label>
+        <label>
+          <span id="favoriteBookLabel">A recent favorite</span>
+          <input id="favoriteBook" type="text" value="Harry Potter" placeholder="Favorite recent book" />
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 id="loveTitle">2. Pick the story ingredients she loves</h2>
+      <p class="hint" id="loveHint">Tap a few. The best recommendation mix usually starts with 3 to 6 picks.</p>
+      <div id="loveChips" class="chips" aria-label="story ingredients you love"></div>
+    </section>
+
+    <section class="card">
+      <h2 id="vibeTitle">3. Choose the reading mood</h2>
+      <p class="hint" id="vibeHint">This helps the recommendations feel right for this moment, not just in general.</p>
+      <div id="vibeChips" class="chips vibe-row" aria-label="reading moods"></div>
+    </section>
+
+    <section class="card">
+      <h2 id="avoidTitle">4. Skip these for now</h2>
+      <p class="hint" id="avoidHint">Avoiding a few friction points can be just as helpful as choosing favorites.</p>
+      <div id="hateChips" class="chips" aria-label="things to avoid"></div>
+    </section>
+
+    <section class="actions">
+      <button id="recommendBtn" class="btn primary">Show My Book Stack</button>
+      <button id="resetBtn" class="btn ghost">Start Over</button>
+    </section>
+
+    <section id="recommendationsSection" class="card hidden">
+      <div class="section-heading">
+        <div>
+          <h2 id="resultsTitle">Your Story Stack</h2>
+          <p id="resultSubtitle" class="hint"></p>
+        </div>
+        <div class="score-chip" id="matchEnergy">Strong match</div>
+      </div>
+
+      <aside class="parent-note" aria-label="affiliate disclosure for parents">
+        <p class="parent-note-title" id="parentNoteTitle">For parents</p>
+        <p id="affiliateDisclosure" class="parent-note-copy">
+          Purchase links below are for grown-ups. We may earn a commission from qualifying purchases.
+        </p>
+      </aside>
+
+      <article id="spotlightCard" class="spotlight"></article>
+
+      <div id="recommendGrid" class="grid"></div>
+
+      <div class="divider"></div>
+
+      <div class="section-heading compact">
+        <div>
+          <h3 id="stretchTitle">Stretch picks</h3>
+          <p class="hint" id="stretchHint">These gently widen the reading world without ignoring current favorites.</p>
+        </div>
+      </div>
+      <div id="exploreCards" class="explore-grid"></div>
+
+      <div class="plan-actions">
+        <button id="unlockPlanBtn" class="btn primary">Make a 7-day reading trail</button>
+      </div>
+    </section>
+
+    <section id="planSection" class="card hidden">
+      <h2 id="planTitle">7-Day Reading Trail</h2>
+      <p id="planIntro" class="hint"></p>
+      <div id="planGrid" class="plan-grid"></div>
+    </section>
+
+    <section class="image-credits card">
+      <p class="image-credits-title">Free image credits / Bildnachweise</p>
+      <div class="image-credit-links">
+        <a href="https://unsplash.com/illustrations/planets-stars-and-space-aPazlNkm25o" target="_blank" rel="noopener noreferrer">Space illustration by karem adem</a>
+        <a href="https://unsplash.com/photos/a-cozy-library-room-with-books-3t3V-I6I3XY" target="_blank" rel="noopener noreferrer">Library photo by Abel Prado</a>
+        <a href="https://unsplash.com/photos/a-stack-of-books-with-colorful-ribbons-on-them-gdeIn8lsTzs" target="_blank" rel="noopener noreferrer">Book stack photo by Kelsy Gagnebin</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
